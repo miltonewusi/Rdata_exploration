@@ -1,0 +1,460 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={diabetes.R},
+  pdfauthor={DELL},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{diabetes.R}
+\author{DELL}
+\date{2025-06-23}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#A study to explore the potential causes and identify key risk factors influencing diabetes outcomes.}
+
+\CommentTok{\#importing relevant libraries}
+
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.1     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.1
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\#loading the and viewing the dataset R studio}
+
+\NormalTok{diabetes }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"diabetes.xlsx"}\NormalTok{)}
+\FunctionTok{View}\NormalTok{(diabetes)}
+
+\CommentTok{\# What is the structure of the dataset? How many rows and column?}
+\FunctionTok{str}\NormalTok{(diabetes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## tibble [500 x 8] (S3: tbl_df/tbl/data.frame)
+##  $ Age           : num [1:500] 56 69 46 32 60 25 78 38 56 75 ...
+##  $ Sex           : num [1:500] 1 1 2 1 1 1 1 1 2 1 ...
+##  $ Residence     : num [1:500] 2 2 1 1 2 1 2 2 2 1 ...
+##  $ Religion      : num [1:500] 1 2 3 3 1 2 1 1 1 1 ...
+##  $ Alcohol_Intake: num [1:500] 1 0 0 0 1 0 0 0 0 1 ...
+##  $ Obesity       : num [1:500] 0 1 0 0 1 0 0 0 1 0 ...
+##  $ BMI           : num [1:500] 27.2 26.4 26.6 19.7 29.2 29.7 24.1 24.8 18.9 27.1 ...
+##  $ FBG           : num [1:500] 5.1 7.4 5.3 6.6 6.4 5.7 5.1 5.2 5.8 5.4 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The dataset has 500 observations or rows and 8 variables}
+
+\NormalTok{variables }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(diabetes)}
+\NormalTok{variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Age"            "Sex"            "Residence"      "Religion"      
+## [5] "Alcohol_Intake" "Obesity"        "BMI"            "FBG"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# summary statistic on the Age variable}
+\FunctionTok{summary}\NormalTok{(diabetes}\SpecialCharTok{$}\NormalTok{Age)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   18.00   35.00   50.00   50.34   66.00   80.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# mode of Age}
+\NormalTok{mode\_age }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(Age, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{mode\_age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 63 x 2
+##      Age     n
+##    <dbl> <int>
+##  1    79    18
+##  2    50    16
+##  3    77    16
+##  4    52    14
+##  5    41    13
+##  6    61    12
+##  7    19    11
+##  8    45    11
+##  9    49    11
+## 10    56    11
+## # i 53 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# mode of age distribution is 18  }
+
+\CommentTok{\# Histogram for age}
+\FunctionTok{ggplot}\NormalTok{(diabetes,}\FunctionTok{aes}\NormalTok{(Age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{30}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Age Distribution"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Ages"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequency"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{diabetes_files/figure-latex/unnamed-chunk-1-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#replacing logical data of Sex with 2 categorical "Male" and "Female"}
+\NormalTok{diabetes }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{gender =} \FunctionTok{if\_else}\NormalTok{(Sex }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\StringTok{"Female"}\NormalTok{, }\StringTok{"Male"}\NormalTok{)}
+\NormalTok{      )}
+\CommentTok{\#visualization sex with bar plot}
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{diabetes_files/figure-latex/unnamed-chunk-1-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# How many male and female in this study?}
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(gender, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   gender     n
+##   <chr>  <int>
+## 1 Female   254
+## 2 Male     246
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#adding a new variable for residence}
+\NormalTok{diabetes }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{residence =} \FunctionTok{if\_else}\NormalTok{(Residence }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\StringTok{"Rural"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(residence)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{( }\AttributeTok{title =} \StringTok{"Residence of study respondents"}\NormalTok{,}
+        \AttributeTok{x =} \StringTok{"Residence"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{diabetes_files/figure-latex/unnamed-chunk-1-3.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding a new categorical variable for religion}
+\NormalTok{diabetes }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{religion =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{      Religion }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\textasciitilde{}} \StringTok{"Christian"}\NormalTok{,}
+\NormalTok{      Religion }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{\textasciitilde{}} \StringTok{"Muslim"}\NormalTok{,}
+\NormalTok{      Religion }\SpecialCharTok{==} \DecValTok{3} \SpecialCharTok{\textasciitilde{}} \StringTok{"Tradition"}
+\NormalTok{    )}
+\NormalTok{      )}
+\NormalTok{diabetes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 500 x 11
+##      Age   Sex Residence Religion Alcohol_Intake Obesity   BMI   FBG gender
+##    <dbl> <dbl>     <dbl>    <dbl>          <dbl>   <dbl> <dbl> <dbl> <chr> 
+##  1    56     1         2        1              1       0  27.2   5.1 Female
+##  2    69     1         2        2              0       1  26.4   7.4 Female
+##  3    46     2         1        3              0       0  26.6   5.3 Male  
+##  4    32     1         1        3              0       0  19.7   6.6 Female
+##  5    60     1         2        1              1       1  29.2   6.4 Female
+##  6    25     1         1        2              0       0  29.7   5.7 Female
+##  7    78     1         2        1              0       0  24.1   5.1 Female
+##  8    38     1         2        1              0       0  24.8   5.2 Female
+##  9    56     2         2        1              0       1  18.9   5.8 Male  
+## 10    75     1         1        1              1       0  27.1   5.4 Female
+## # i 490 more rows
+## # i 2 more variables: residence <chr>, religion <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(Religion, religion)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 500 x 2
+##    Religion religion 
+##       <dbl> <chr>    
+##  1        1 Christian
+##  2        2 Muslim   
+##  3        3 Tradition
+##  4        3 Tradition
+##  5        1 Christian
+##  6        2 Muslim   
+##  7        1 Christian
+##  8        1 Christian
+##  9        1 Christian
+## 10        1 Christian
+## # i 490 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(diabetes, }\FunctionTok{aes}\NormalTok{(religion)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Religion of Study participants"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Religious group"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequency"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{diabetes_files/figure-latex/unnamed-chunk-1-4.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(religion, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   religion      n
+##   <chr>     <int>
+## 1 Christian   169
+## 2 Tradition   167
+## 3 Muslim      164
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#categorical variable for alcohol intake, obesity, and BMI}
+\NormalTok{diabetes }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{alcohol =} \FunctionTok{if\_else}\NormalTok{(Alcohol\_Intake }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+    \AttributeTok{obese =} \FunctionTok{if\_else}\NormalTok{(Obesity }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+    \AttributeTok{bmi =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{      BMI }\SpecialCharTok{\textless{}} \FloatTok{18.5} \SpecialCharTok{\textasciitilde{}} \StringTok{"undwerweight"}\NormalTok{,}
+\NormalTok{      BMI }\SpecialCharTok{\textgreater{}=} \FloatTok{18.5} \SpecialCharTok{\&}\NormalTok{ BMI }\SpecialCharTok{\textless{}=} \FloatTok{24.9} \SpecialCharTok{\textasciitilde{}} \StringTok{"healthy\_weight"}\NormalTok{,}
+\NormalTok{      BMI }\SpecialCharTok{\textgreater{}=} \DecValTok{25} \SpecialCharTok{\&}\NormalTok{ BMI }\SpecialCharTok{\textless{}=} \FloatTok{29.9} \SpecialCharTok{\textasciitilde{}} \StringTok{"overweight"}\NormalTok{,}
+\NormalTok{      BMI }\SpecialCharTok{\textgreater{}=} \DecValTok{30} \SpecialCharTok{\&}\NormalTok{ BMI }\SpecialCharTok{\textless{}=} \FloatTok{39.9} \SpecialCharTok{\textasciitilde{}} \StringTok{"obese"}\NormalTok{,}
+\NormalTok{      BMI }\SpecialCharTok{\textgreater{}=} \DecValTok{40} \SpecialCharTok{\textasciitilde{}} \StringTok{"severely\_obese"}
+\NormalTok{    )}
+\NormalTok{  )}
+
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(bmi, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   bmi                n
+##   <chr>          <int>
+## 1 healthy_weight   231
+## 2 overweight       195
+## 3 obese             53
+## 4 undwerweight      20
+## 5 severely_obese     1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(BMI, bmi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 500 x 2
+##      BMI bmi           
+##    <dbl> <chr>         
+##  1  27.2 overweight    
+##  2  26.4 overweight    
+##  3  26.6 overweight    
+##  4  19.7 healthy_weight
+##  5  29.2 overweight    
+##  6  29.7 overweight    
+##  7  24.1 healthy_weight
+##  8  24.8 healthy_weight
+##  9  18.9 healthy_weight
+## 10  27.1 overweight    
+## # i 490 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diabetes }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(BMI }\SpecialCharTok{:}\NormalTok{ bmi) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(BMI }\SpecialCharTok{\textless{}} \FloatTok{18.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 8
+##      BMI   FBG gender residence religion  alcohol obese bmi         
+##    <dbl> <dbl> <chr>  <chr>     <chr>     <chr>   <chr> <chr>       
+##  1  17.3   7.2 Female Urban     Muslim    No      No    undwerweight
+##  2  16.1   4.4 Female Urban     Tradition No      Yes   undwerweight
+##  3  17.5   4.7 Female Urban     Christian Yes     No    undwerweight
+##  4  15     4.8 Male   Rural     Christian Yes     No    undwerweight
+##  5  16     6.1 Male   Urban     Tradition No      No    undwerweight
+##  6  17.5   5.3 Female Urban     Tradition No      Yes   undwerweight
+##  7  16.2   5.6 Male   Urban     Tradition No      No    undwerweight
+##  8  17.1   6.4 Male   Urban     Christian No      Yes   undwerweight
+##  9  16.6   8   Male   Urban     Muslim    No      Yes   undwerweight
+## 10  15     5.6 Female Rural     Muslim    No      No    undwerweight
+## 11  17.9   5.1 Female Urban     Muslim    No      No    undwerweight
+## 12  17.9   5.9 Female Urban     Muslim    No      No    undwerweight
+## 13  17.3   6.8 Female Urban     Tradition No      No    undwerweight
+## 14  18.2   6.7 Female Urban     Tradition No      Yes   undwerweight
+## 15  16.7   6.8 Male   Urban     Muslim    No      Yes   undwerweight
+## 16  16     7.3 Female Rural     Tradition No      No    undwerweight
+## 17  16.5   6   Female Rural     Tradition No      No    undwerweight
+## 18  15     7.3 Female Urban     Muslim    No      Yes   undwerweight
+## 19  16.5   6.7 Female Urban     Christian No      Yes   undwerweight
+## 20  16.7   7.5 Female Rural     Tradition No      Yes   undwerweight
+\end{verbatim}
+
+\end{document}
